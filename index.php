@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-custom py-3">
+    <nav class="navbar navbar-custom sticky-top py-3">
         <div class="container d-flex justify-content-between align-items-center">
             <div class="search-box">
                 <input type="text" placeholder="Buscar">
@@ -102,6 +102,32 @@
                         </th>
                         <?php endforeach; ?>
                 </tr>
+            </table>
+            <div id="video" class="container my-5 ratio ratio-16x9 rounded shadow" style="border: 4px solid #a98189;">
+                <iframe width="560" height="315" 
+                    src="https://www.youtube.com/embed/Y4naInbLQxM?si=ak8g-qsRD1U3RCuW" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <br>
+            <table id="favs">
+                <h1>Marcas</h1>
+                    <tr>
+                        <th>Benefit</th>
+                        <th>Chanel</th>
+                        <th>Dior</th>
+                        <th>Rare Beauty</th>
+                    </tr>
+                    <tr>
+                        <th><a href="./src/products.php"><img src="./images/BENEFIT.png" alt="benefitlogo"></a></th>
+                        <th><img src="./images/CHANEL.png" alt="chanel logo"></th>
+                        <th><img src="./images/DIOR.png" alt="dior logo"></th>
+                        <th><img src="./images/RAREBEAUTY.png" alt="Rare beauty logo"></th>
+                    </tr>
             </table>
         </div>
     </div>
