@@ -1,0 +1,147 @@
+.navbar-custom {
+    background-color: #a98189;
+    color: white;
+    border-radius: 6px 6px 0 0;
+}
+
+.search-box {
+    border: 1px solid white;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    padding: 4px 10px;
+}
+
+.search-box input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    width: 150px;
+}
+
+.search-box input::placeholder {
+    color: #e0d0d5;
+}
+
+.material-icons {
+    color: white;
+}
+
+.cart-icon {
+    position: relative;
+}
+
+.cart-count {
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    background-color: white;
+    color: black;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-links {
+    background-color: #a98189;
+}
+
+.nav-links a {
+    color: white !important;
+    text-decoration: none;
+    margin: 0 20px;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+.newsletter-section {
+    background-color: #a98189;
+}
+
+.footer-main {
+    background-color: #000;
+}
+
+body {
+    background-color: #f8f3f4;
+}
+
+.carrito-header {
+    background-color: #a98189;
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.cantidad-input {
+    width: 60px;
+}
+
+.total {
+    font-weight: bold;
+}
+
+#favs {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 20px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(169, 129, 137, 0.3);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+#favs h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #a98189;
+}
+
+#favs th {
+    padding: 15px;
+    font-size: 1rem;
+    color: #333;
+    vertical-align: middle;
+}
+
+#favs img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#favs h2 {
+    font-size: 1rem;
+    margin-top: 5px;
+    color: #a98189;
+}
+
+#favs button {
+    background-color: #a98189;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#favs button:hover {
+    background-color: #8b6b73;
+}
