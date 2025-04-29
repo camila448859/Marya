@@ -19,7 +19,7 @@
         if ($row = mysqli_fetch_assoc($q)){
             $_SESSION['id_usuario'] = $row['i_usuario'];
             $_SESSION['nombre_usuario'] = $row['nombre'];
-            header("Location: index.php");
+            header("Location: ../index.php");
             exit;
         }else{
             $error_login = "❌ Usuario o contraseña incorrectos.";
@@ -71,6 +71,7 @@
             }
         }
     }
+    mysqli_close($con);
 ?>
 <!DOCTYPE html>
 <html lang="en">

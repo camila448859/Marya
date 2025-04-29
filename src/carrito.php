@@ -1,5 +1,11 @@
 <?php 
+session_start();
 $con = mysqli_connect("localhost", "root", "CAMILA", "marya");
+
+if (!isset($_SESSION['id_usuario'])) {
+  header('Location: login.php');
+  exit();
+}
 
 if (mysqli_connect_errno()) {
     echo "<div class='alert alert-danger'>Error al conectar a MySQL: " . mysqli_connect_error() . "</div>";
@@ -14,6 +20,7 @@ if (mysqli_connect_errno()) {
         ORDER BY compra.fecha_hora DESC
         LIMIT 10;"
     );
+  
 ?>
 <!DOCTYPE html>
 <html lang="es">
