@@ -136,7 +136,7 @@ mysqli_close($con);
     </div>
 
     <div class="text-center mt-5">
-      <a href="edit_profile.php" class="btn btn-marya me-2">Editar Perfil</a>
+      <a href="carrito.php" class="btn btn-marya me-2">Ver carrito</a>
       <a href="../index.php"     class="btn btn-outline-secondary">Volver al Inicio</a>
     </div>
   </div>

@@ -1,4 +1,11 @@
-<?php session_start();?>
+<?php 
+    session_start();
+    $con = mysqli_connect("localhost", "root", "CAMILA", "marya");
+
+    if (mysqli_connect_errno()){
+        die("Error de conexion: ".mysqli_connect_error());
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -83,25 +90,6 @@
                         <th>Adict Lip Maximer <h2>$910.00</h2></th>
                         <th>Brow Harmony Precision Pencil <h2>$510.00</h2></th>
                     </tr>
-                    <tr>
-                        <?php
-                        $productos = [
-                        ['nombre' => 'Bene tint', 'precio' => 520.00],
-                        ['nombre' => 'Joues Contraste blush', 'precio' => 1060.00],
-                        ['nombre' => 'Adict Lip Maximer', 'precio' => 910.00],
-                        ['nombre' => 'Brow Harmony Precision Pencil', 'precio' => 510.00],
-                        ];
-
-                        foreach ($productos as $producto):
-                        ?>
-                        <th>
-                            <form method="POST" action="<?php echo isset($_SESSION['id_usuario']) ? './src/carrito.php' : './src/login.php'; ?>">
-                            <input type="hidden" name="nombre" value="<?= $producto['nombre'] ?>">
-                            <button type="submit" name="agregar">Agregar al Carrito</button>
-                            </form>
-                        </th>
-                        <?php endforeach; ?>
-                </tr>
             </table>
             <div id="video" class="container my-5 ratio ratio-16x9 rounded shadow" style="border: 4px solid #a98189;">
                 <iframe width="560" height="315" 
