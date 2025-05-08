@@ -41,9 +41,12 @@ $stmt = mysqli_prepare($con, $sql);
 mysqli_stmt_bind_param($stmt, 'i', $userId);
 mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
-if (!$result || mysqli_num_rows($result)!==1) {
+
+//usar empty 
+if (empty($result)) {
     die("Usuario no encontrado.");
 }
+
 $user = mysqli_fetch_assoc($result);
 mysqli_stmt_close($stmt);
 mysqli_close($con);

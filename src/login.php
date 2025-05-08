@@ -247,6 +247,7 @@
                     <button type="submit" name="registrar" class="btn btn-success w-100">Registrarse</button>
                 </form>
             </div>
+            <a href="../index.php"     class="btn btn-outline-secondary">Volver al Inicio</a>
         </div>
     </div>
 </body>

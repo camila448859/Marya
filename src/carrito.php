@@ -1,61 +1,34 @@
 <?php 
   session_start();
 
+  if (!isset($_SESSION['id_usuario'])) {
+    header('Location: login.php');
+    exit();
+  }
+  $userId = (int) $_SESSION['id_usuario'];
+
   $con = mysqli_connect("localhost", "root", "CAMILA", "marya");
   if (mysqli_connect_errno()) {
     die('Error de conexión: ' . mysqli_connect_error());
   }
   mysqli_set_charset($con, 'utf8mb4');
 
-  if (!isset($_SESSION['id_usuario'])) {
-    header('Location: login.php');
-    exit();
-  }
-
-  $userId = (int) $_SESSION['id_usuario'];
-
-  if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_product'])) {
-    $prodId = intval($_POST['i_producto']);
-
-    // Buscar compras asociadas al producto y usuario
-    $sqlFind = 
-        "SELECT cp.i_compro, cp.i_compra 
-         FROM com_pro cp 
-         JOIN usu_com uc ON cp.i_compra = uc.i_compra 
-         WHERE uc.i_usuario = ? AND cp.i_producto = ?";
-    $stmtFind = mysqli_prepare($con, $sqlFind);
-    mysqli_stmt_bind_param($stmtFind, 'ii', $userId, $prodId);
-    mysqli_stmt_execute($stmtFind);
-    $resFind = mysqli_stmt_get_result($stmtFind);
-
-    while ($rowDel = mysqli_fetch_assoc($resFind)) {
-        $i_compro = (int) $rowDel['i_compro'];
-        $i_compra = (int) $rowDel['i_compra'];
-
-        mysqli_query($con, "DELETE FROM com_pro WHERE i_compro = $i_compro");
-
-        mysqli_query($con, "DELETE FROM usu_com WHERE i_compra = $i_compra");
-
-        mysqli_query($con, "DELETE FROM compra WHERE i_compra = $i_compra");
-    }
-    mysqli_stmt_close($stmtFind);
-
-
-    header('Location: ' . $_SERVER['PHP_SELF']);
-    exit();
-}
   $sql = "
     SELECT
-      p.i_producto,
-      p.nombre,
-      p.precio,
-      COUNT(*)      AS cantidad
-    FROM usu_com uc
-    JOIN com_pro cp ON uc.i_compra = cp.i_compra
+    c.i_compra,
+    c.fecha_hora,
+    p.i_producto,
+    p.nombre,
+    p.precio,
+    COUNT(*) AS cantidad
+    FROM compra c
+    JOIN usu_com uc ON c.i_compra = uc.i_compra
+    JOIN com_pro cp ON c.i_compra = cp.i_compra
     JOIN producto p ON cp.i_producto = p.i_producto
-    WHERE uc.i_usuario = ?
-    GROUP BY p.i_producto, p.nombre, p.precio
-    ORDER BY p.nombre
+    WHERE uc.i_usuario = ? 
+    AND c.estado = 0
+    GROUP BY p.i_producto, p.nombre, p.precio, c.i_compra, c.fecha_hora
+    ORDER BY c.fecha_hora DESC
   ";
 
   $stmt = mysqli_prepare($con, $sql);
@@ -141,18 +114,10 @@
                 <?= $row['cantidad'] ?>
               </td>
               <td class="text-center">
-              <form method="POST"
-      action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES); ?>"
-      onsubmit="return confirm('¿Eliminar este producto del carrito?');">
-  <input
-    type="hidden"
-    name="i_producto"
-    value="<?php echo htmlspecialchars($row['i_producto'], ENT_QUOTES); ?>"
-  >
-  <button type="submit" name="delete_product" class="btn-delete" title="Eliminar">
-    🗑
-  </button>
-</form>
+              <form method="GET" action="deletecarrito.php" onsubmit="return confirm('¿Eliminar este producto del carrito?');">
+                <input type="hidden" name="i_producto" value="<?php echo (int)$row['i_producto']; ?>">
+                <button type="submit" class="btn-delete" title="Eliminar">🗑</button>
+              </form>
               </td>
             </tr>
             <?php endwhile; ?>
@@ -168,7 +133,7 @@
       </div>
       <div class="text-center mt-4">
         <a href="products.php" class="btn btn-outline-secondary me-2">Seguir Comprando</a>
-        <a href="checkout.php" class="btn btn-marya">Finalizar Compra</a>
+        <a href="compra.php" class="btn btn-marya">Finalizar Compra</a>
       </div>
     <?php endif; ?>
 

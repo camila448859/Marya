@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 $con = mysqli_connect("localhost", "root", "CAMILA", "marya");
 if (mysqli_connect_errno()) {
     die("Error de conexión: " . mysqli_connect_error());
