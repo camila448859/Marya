@@ -98,6 +98,11 @@ $imagenes = [
     29 => '../images/rarebeauty_softpinchliquidblushmini.PNG',
     30 => '../images/rarebeauty_softpinchmattebouncyblush.PNG',
     31 => '../images/rarebeauty_softpinchtintedlipoil.PNG',
+    32 => '../images/dior_diorbackstagesmokyeyepalette.avif',
+    33 => '../images/rarebeauty_softpinchliquidcontour.avif',
+    34 => '../images/rarebeauty_softpinchluminouspowderblush.avif',
+    35 => '../images/rarebeauty_stayvulnerablemeltingblush.avif',
+    
 ];
 ?>
 <!DOCTYPE html>
@@ -173,24 +178,23 @@ $imagenes = [
           </tr>
         </thead>
         <tbody>
-        <?php foreach ($productos as $prod): ?>
-          <?php $id = $prod['i_producto']; ?>
-          <?php $img = $imagenes[$id] ?? 'https://via.placeholder.com/60'; ?>
-          <tr>
-            <td><img src="<?= htmlspecialchars($img, ENT_QUOTES) ?>" alt="" class="product-img"></td>
-            <td><?= htmlspecialchars($prod['nombre'], ENT_QUOTES) ?></td>
-            <td class="text-end">$<?= number_format($prod['precio'],2) ?></td>
-            <td>
-              <form method="POST" action="products.php">
-                <input type="hidden" name="i_producto" value="<?= $id ?>">
-                <button type="submit" name="agregar" class="btn btn-marya btn-sm">Agregar</button>
-              </form>
-            </td>
-          </tr>
-        <?php endforeach; ?>
+            <?php foreach ($productos as $prod): ?>
+            <?php $id = $prod['i_producto']; ?>
+            <?php $img = $imagenes[$id] ?? 'https://via.placeholder.com/60'; ?>
+            <tr>
+                <td><img src="<?= htmlspecialchars($img, ENT_QUOTES) ?>" alt="" class="product-img"></td>
+                <td><?= htmlspecialchars($prod['nombre'], ENT_QUOTES) ?></td>
+                <td class="text-end">$<?= number_format($prod['precio'],2) ?></td>
+                <td>
+                <form method="POST" action="products.php">
+                    <input type="hidden" name="i_producto" value="<?= $id ?>">
+                    <button type="submit" name="agregar" class="btn btn-marya btn-sm">Agregar</button>
+                </form>
+                </td>
+            </tr>
+            <?php endforeach; ?>
         </tbody>
       </table>
-    </div>
   </div>
 
   <footer class="bg-white text-center py-4 mt-5 shadow-sm">

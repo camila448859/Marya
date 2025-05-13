@@ -31,7 +31,6 @@
                 <a href="./src/profile.php"><span class="material-icons">person</span></a>
                 <div class="cart-icon">
                     <a href="./src/carrito.php"><span class="material-icons">shopping_cart</span></a>
-                    <span class="cart-count">0</span>
                 </div>
             </div>
         </div>
@@ -111,10 +110,35 @@
                         <th>Rare Beauty</th>
                     </tr>
                     <tr>
-                        <th><a href="./src/products.php"><img src="./images/BENEFIT.png" alt="benefitlogo"></a></th>
+                        <th><img src="./images/BENEFIT.png" alt="benefitlogo"></th>
                         <th><img src="./images/CHANEL.png" alt="chanel logo"></th>
                         <th><img src="./images/DIOR.png" alt="dior logo"></th>
                         <th><img src="./images/RAREBEAUTY.png" alt="Rare beauty logo"></th>
+                    </tr>
+            </table>
+            <div id="video" class="container my-5 ratio ratio-16x9 rounded shadow" style="border: 4px solid #a98189;">
+                <iframe width="560" height="315" 
+                src="https://www.youtube.com/embed/g_egyx3GLys?si=i5NH7j-MqGSaFZu0"
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <table id="favs">
+                <h1>Categorias</h1>
+                    <tr>
+                        <th>Labiales</th>
+                        <th>Cara</th>
+                        <th>SkinCare</th>
+                        <th>Ojos</th>
+                    </tr>
+                    <tr>
+                        <th><img src="./images/dior_addictlipmaximer.PNG" alt="labiales"></th>
+                        <th><img src="./images/rarebeauty_softpinchliquidcontour.avif" alt="cara"></th>
+                        <th><img src="./images/benefit_pore.PNG" alt="skincare"></th>
+                        <th><img src="./images/chanel_lelinerdechanel.PNG" alt="ojos"></th>
                     </tr>
             </table>
         </div>

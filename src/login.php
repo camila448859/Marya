@@ -160,7 +160,7 @@
     <div class="container py-5">
         <div class="row justify-content-center">
 
-            <div class="col-md-5 form.container me-3">
+            <div class="col-md-5 form-container me-3">
                 <h2>Iniciar sesión</h2>
                 <?php if (isset($error_login)) echo "<div class='alert alert-danger'>$error_login</div>"; ?>
                 <form method="POST">
